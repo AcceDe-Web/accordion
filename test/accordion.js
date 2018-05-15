@@ -10,7 +10,7 @@ let page;
 
 // Label test suite in output
 test( '-------------------------------', async t => {
-  t.comment( 'Running *Tab* test suite.' );
+  t.comment( 'Running *Multiselectable* test suite.' );
   t.comment( '-------------------------------' );
 
   browser = await puppeteer.launch();
