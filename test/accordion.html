@@ -120,11 +120,17 @@
     <script src="../dist/accordion.js"></script>
     <script>
       function close( header, panel ) {
-        header.dataset.closeCB = true;
+        window.closeCallback = {
+          header: header,
+          panel: panel
+        }
       }
 
       function open( header, panel ) {
-        header.dataset.openCB = true;
+        window.openCallback = {
+          header: header,
+          panel: panel
+        }
       }
 
       var list = document.querySelector( '[data-role="accordion"]' );
