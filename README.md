@@ -142,17 +142,17 @@ Both `header` and `panel` HTMLElement are passed on the callback
 * `closeAll()` - Close all currently opened panels (will trigger a `close` event on each opened panel).
 * `close( panel )` - Close a panel. Panel is an `HTMLElement` representing the panel. It will trigger a `close` event on the panel.
 
-## References
+## Properties
 
 To know which `header` and `panel` is open use `accordion.current`. It will return an array containing all opened headers and panels
 
 ```js
 // ES6 destructuring array
-const [ accordion1, ... ] = tablist.current;
+const [ accordion1, ... ] = accordion.current;
 const { header, panel } = accordion1;
 
 // ES5
-var accordions = tablist.openedTab;
+var accordions = accordion.current;
 
 accordions.forEach( function( accordion ){
   accordion.header; // return the header
