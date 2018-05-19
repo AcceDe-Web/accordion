@@ -194,7 +194,24 @@ test( 'Panel navigation', async t => {
     return document.querySelector( '.tab:nth-of-type(2) [aria-controls]' ) === document.activeElement;
   });
 
-  t.true( crtlUp, 'La combinaison « Ctrl + Flèche haut » focus le header lié au panneau' );
+  // move to second panel
+  await page.keyboard.press( 'ArrowDown' );
+
+  // tab back to a link in the first panel
+  await page.keyboard.down( 'Shift' );
+  await page.keyboard.press( 'Tab' );
+  await page.keyboard.up( 'Shift' );
+
+  // focus the first header
+  await page.keyboard.down( 'Control' );
+  await page.keyboard.press( 'ArrowUp' );
+  await page.keyboard.up( 'Control' );
+
+  const panelHeaderFocus = await page.evaluate(() => {
+    return document.querySelector( '.tab:nth-of-type(2) [aria-controls]' ) === document.activeElement;
+  });
+
+  t.true( crtlUp && panelHeaderFocus, 'La combinaison « Ctrl + Flèche haut » focus le header lié au panneau' );
 
   await page.focus( '[aria-hidden="false"] a' );
 
@@ -229,20 +246,20 @@ test( 'Panel navigation', async t => {
   await page.keyboard.up( 'Control' );
 
   const pageUpFirst = await page.evaluate(() => {
-    return document.querySelector( '.tab:last-of-type [aria-controls]' ) === document.activeElement;
+    return document.activeElement.id === 'tab4';
   });
 
   t.true( pageUpFirst, 'La combinaison « Ctrl + Page précédente » focus le dernier header depuis le premier panneau' );
 
   await page.keyboard.press( 'Space' );
-  await page.focus( '[aria-hidden="false"] a' );
+  await page.focus( '#panel4 a' );
 
   await page.keyboard.down( 'Control' );
   await page.keyboard.press( 'PageDown' );
   await page.keyboard.up( 'Control' );
 
   const pageDownFirst = await page.evaluate(() => {
-    return document.querySelector( '[aria-controls]' ) === document.activeElement;
+    return document.activeElement.id === 'tab1';
   });
 
   t.true( pageDownFirst, 'La combinaison « Ctrl + Page suivante » focus le premier header depuis le dernier panneau' );
