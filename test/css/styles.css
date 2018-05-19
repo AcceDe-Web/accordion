@@ -50,8 +50,8 @@ a:hover {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard a:active:focus,
-.keyboard a:hover:focus {
+a:active:focus,
+a:hover:focus {
   outline-style: solid;
 }
 abbr[title] {
@@ -250,9 +250,9 @@ html {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard *:focus,
-.keyboard *:before:focus,
-.keyboard *:after:focus {
+*:focus,
+*:before:focus,
+*:after:focus {
   outline-style: solid;
 }
 body {
@@ -276,7 +276,7 @@ a {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard a:focus {
+a:focus {
   outline-style: solid;
 }
 a:focus {
@@ -284,7 +284,7 @@ a:focus {
 }
 .no-touchevents a:hover,
 .touchevents a:active,
-.keyboard a:focus {
+a:focus {
   color: #b75c52;
   text-decoration: none;
 }
@@ -322,7 +322,7 @@ code {
 }
 .no-touchevents [class^=button]:hover,
 .touchevents [class^=button]:active,
-.keyboard [class^=button]:focus {
+[class^=button]:focus {
   text-decoration: none;
 }
 .button-box {
@@ -334,7 +334,7 @@ code {
 }
 .no-touchevents .button-box:hover,
 .touchevents .button-box:active,
-.keyboard .button-box:focus {
+.button-box:focus {
   background-color: rgba(0,0,0,0.1);
   color: inherit;
 }
@@ -348,12 +348,12 @@ code {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard .button-link:focus {
+.button-link:focus {
   outline-style: solid;
 }
 .no-touchevents .button-link:hover,
 .touchevents .button-link:active,
-.keyboard .button-link:focus {
+.button-link:focus {
   border-bottom-color: transparent;
 }
 .button-text {
@@ -366,7 +366,7 @@ code {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard .button-text:focus {
+.button-text:focus {
   outline-style: solid;
 }
 .button-modal {
@@ -397,15 +397,15 @@ code {
 }
 .no-touchevents .button-modal:hover,
 .touchevents .button-modal:active,
-.keyboard .button-modal:focus {
+.button-modal:focus {
   background-color: #a5534a;
 }
 .no-touchevents .button-modal:hover:before,
 .touchevents .button-modal:active:before,
-.keyboard .button-modal:focus:before,
+.button-modal:focus:before,
 .no-touchevents .button-modal:hover:after,
 .touchevents .button-modal:active:after,
-.keyboard .button-modal:focus:after {
+.button-modal:focus:after {
   width: 50%;
 }
 .button-modal > span {
@@ -424,7 +424,7 @@ code {
   outline-style: none;
   outline-width: 0.125rem;
 }
-.keyboard .modal-header .button-close:focus {
+.modal-header .button-close:focus {
   outline-style: solid;
 }
 .modal-header .button-close .icon-close {
@@ -447,7 +447,7 @@ code {
 }
 .no-touchevents .modal-header .button-close:hover .icon-close,
 .touchevents .modal-header .button-close:active .icon-close,
-.keyboard .modal-header .button-close:focus .icon-close {
+.modal-header .button-close:focus .icon-close {
   -ms-transform: rotate(135deg);
       transform: rotate(135deg);
 }
@@ -592,13 +592,13 @@ vim-hybrid theme by w0ng (https://github.com/w0ng/vim-hybrid)
 .accordeon .tab button:focus {
   -ms-touch-action: none;
 }
-.keyboard .accordeon .tab button:focus,
+.accordeon .tab button:focus,
 .touchevents .accordeon .tab button:active,
 .no-touchevents .accordeon .tab button:hover {
   outline-style: none;
   background-color: #a5534a;
 }
-.keyboard .accordeon .tab button:focus:after,
+.accordeon .tab button:focus:after,
 .touchevents .accordeon .tab button:active:after,
 .no-touchevents .accordeon .tab button:hover:after {
   width: 20%;
@@ -813,17 +813,17 @@ nav.block ul {
 }
 .touchevents .component a:active,
 .no-touchevents .component div:hover a,
-.keyboard .component a:focus {
+.component a:focus {
   outline-style: none;
 }
 .touchevents .component a:active:before,
 .no-touchevents .component div:hover a:before,
-.keyboard .component a:focus:before {
+.component a:focus:before {
   width: 100%;
 }
 .touchevents .component a:active:after,
 .no-touchevents .component div:hover a:after,
-.keyboard .component a:focus:after {
+.component a:focus:after {
   height: 100%;
 }
 .component[aria-hidden="true"] {
@@ -837,7 +837,7 @@ nav.block ul {
 }
 .no-touchevents [role=contentinfo] a:hover,
 .touchevents [role=contentinfo] a:active,
-.keyboard [role=contentinfo] a:focus {
+[role=contentinfo] a:focus {
   color: currentColor;
   text-decoration: none;
 }
@@ -896,7 +896,7 @@ nav.block ul {
 }
 .touchevents .intro-banner p a:active,
 .no-touchevents .intro-banner p a:hover,
-.keyboard .intro-banner p a:focus {
+.intro-banner p a:focus {
   text-decoration: underline;
   color: inherit;
 }
@@ -1072,7 +1072,7 @@ form .actions {
 .tabs [role=tab]:focus {
   -ms-touch-action: none;
 }
-.keyboard .tabs [role=tab]:focus:not([aria-disabled] ),
+.tabs [role=tab]:focus:not([aria-disabled] ),
 .touchevents .tabs [role=tab]:active:not([aria-disabled] ),
 .no-touchevents .tabs [role=tab]:hover:not([aria-disabled] ) {
   background-color: #a5534a;
