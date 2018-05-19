@@ -50,35 +50,6 @@ test( 'Mount', async t => {
   t.end();
 });
 
-// test( 'Focus', async t => {
-
-//   const [ browser, page ] = await createBrowser();
-
-//   await page.focus( '[role="tab"]:nth-child(2)' );
-
-//   const [ selected, selectedIndex, uniqueIndex, selectedCount, hiddenPanel, hiddenCount ] = await page.evaluate(() => {
-//     return [
-//       document.activeElement.getAttribute( 'aria-selected' ),
-//       document.activeElement.tabIndex,
-//       document.querySelectorAll( '[role="tab"][tabindex="0"]' ).length,
-//       document.querySelectorAll( '[aria-selected="true"]' ).length,
-//       document.getElementById( document.activeElement.getAttribute( 'aria-controls' )).getAttribute( 'aria-hidden' ),
-//       document.querySelectorAll( '[role="tabpanel"][aria-hidden="false"]' ).length,
-//     ];
-//   });
-
-//   t.same( selected, 'true', 'L’onglet focus a « [aria-selected="true"] »' );
-//   t.same( selectedIndex, 0, 'L’onglet focus a « [tabindex="0"] »' );
-//   t.same( uniqueIndex, 1, 'Seul l’onglet focus a « [tabindex="0"] »' );
-//   t.same( selectedCount, 1, 'Seul l’onglet focus a « [aria-selected] »' );
-//   t.same( hiddenPanel, 'false', 'Le panneau associé à l’onglet focus a « [aria-hidden="false"] »' );
-//   t.same( hiddenCount, 1, 'Seul le panneau associé à l’onglet focus a « [aria-hidden="false"] »' );
-
-//   await browser.close();
-
-//   t.end();
-// });
-
 test( 'Mouse', async t => {
 
   const [ browser, page ] = await createBrowser();
