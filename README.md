@@ -6,7 +6,7 @@ WAI-ARIA accordion plugin without dependencies.
 
 ### HTML
 
-Basic HTML structure with a heading containing a button and the element to display. Headings can be any `hx` from `h1` to `h6` or an element with the attribute `role="heading"` and an `aria-level` attribute.
+Basic HTML structure with a heading containing a button and the element to display. Headings can be any `hx` from `h1` to `h6` or an element with `role="heading"` and `aria-level` attributes. The headings and panels must be enclosed in a common element used to initiate the script.
 
 #### HTML structure
 
@@ -39,16 +39,16 @@ Basic HTML structure with a heading containing a button and the element to displ
 </div>
 ```
 
-An `aria-disabled` attribute set to `true` on a `button` will disable the `button` and the associated `element` making them unfocusable and unselectable.
+A `disabled` attribute set to `true` on a `button` will disable the `button` and the associated `element` making them unfocusable and unselectable.
 
-If you wish to open one specific tab when the script starts, just add the `data-expanded` attribute with the value of `true` on the desired `button`:
+If you wish to open one specific tab when the script starts, just add the `data-expand` attribute with the value of `true` on the desired `button`:
 
 To allow multiple panels to be opened at the same time add `data-multiselectable="true"` to the parent of the headers and panels
 
 ```html
 <div class="accordion" data-multiselectable="true">
   <h3>
-    <button id="tab1" aria-controls="panel1" data-expanded="true">Entête n<sup>o</sup> 1</button>
+    <button id="tab1" aria-controls="panel1" data-expand="true">Entête n<sup>o</sup> 1</button>
   </h3>
   ---
 </div>
