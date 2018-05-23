@@ -115,6 +115,59 @@
           </div>
         </div>
       </section>
+      <section class="block">
+        <h2 class="title-block">
+          <svg aria-hidden="true" class="icon-title">
+            <use xlink:href="#icon-beforeTitle"></use>
+          </svg><span>Démonstration</span>
+        </h2>
+        <div class="accordion2" data-role="accordion">
+          <h3 class="tab">
+            <button id="tab11" aria-controls="panel11">Entête n<sup>o</sup> 1
+              <svg aria-hidden="true" class="icon-tab">
+                <use xlink:href="#icon-tabClosed" class="dash"></use>
+                <use xlink:href="#icon-tabOpened" class="pipe"></use>
+              </svg>
+            </button>
+          </h3>
+          <div id="panel11" class="panel" aria-labelledby="tab11">
+            <p>Le saviez-vous ? Le motif de conception « accordéon » est très similaire à celui des « onglets ». Ils partagent en effet les mêmes rôles ARIA : <em lang="en">tablist</em>, <em lang="en">tab</em> et <em lang="en">tabpanel</em>. Ils se démarquent principalement par les raccourcis clavier utilisables. N’hésitez pas à aller voir la <a href="http://www.accede-web.com/notices/interface-riche/onglets/">notice d’accessibilité des onglets</a> ainsi que la page de <a href="/tab.html">démonstration du composant « onglets »</a>.</p>
+          </div>
+          <h3 class="tab">
+            <button id="tab21" aria-controls="panel21">Entête n<sup>o</sup> 2
+              <svg aria-hidden="true" class="icon-tab">
+                <use xlink:href="#icon-tabClosed" class="dash"></use>
+                <use xlink:href="#icon-tabOpened" class="pipe"></use>
+              </svg>
+            </button>
+          </h3>
+          <div id="panel21" class="panel" aria-labelledby="tab21">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non distinctio, corporis, sapiente in accusantium perferendis <a href="#">consectetur</a> quos quis, fugiat assumenda obcaecati. Reiciendis culpa, ut repellendus suscipit, iste rem. Animi, reprehenderit.</p>
+          </div>
+          <h3 class="tab">
+            <button id="tab31" aria-controls="panel31">Entête n<sup>o</sup> 3
+              <svg aria-hidden="true" class="icon-tab">
+                <use xlink:href="#icon-tabClosed" class="dash"></use>
+                <use xlink:href="#icon-tabOpened" class="pipe"></use>
+              </svg>
+            </button>
+          </h3>
+          <div id="panel31" class="panel" aria-labelledby="tab31">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, eos, cumque. Suscipit, eius, <a href="#">cupiditate</a>! Placeat voluptate quis, iste iure culpa, sequi, inventore ducimus vel voluptates nam, ut architecto ab reprehenderit.</p>
+          </div>
+          <h3 class="tab">
+            <button id="tab41" aria-controls="panel41">Entête n<sup>o</sup> 4
+              <svg aria-hidden="true" class="icon-tab">
+                <use xlink:href="#icon-tabClosed" class="dash"></use>
+                <use xlink:href="#icon-tabOpened" class="pipe"></use>
+              </svg>
+            </button>
+          </h3>
+          <div id="panel41" class="panel" aria-labelledby="tab41">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, eos, cumque. Suscipit, eius, cupiditate! Placeat <a href="#">voluptate</a> quis, iste iure culpa, sequi, inventore ducimus vel voluptates nam, ut architecto ab reprehenderit.</p>
+          </div>
+        </div>
+      </section>
     </main>
     <footer role="contentinfo"></footer>
     <script src="../dist/accordion.js"></script>
@@ -133,13 +186,16 @@
         }
       }
 
-      var list = document.querySelector( '[data-role="accordion"]' );
-      window.accordion = new window.Accordion( list );
+      var accordeons = Array.from( document.querySelectorAll( '[data-role="accordion"]' ));
 
-      accordion.on( 'show', open );
-      accordion.on( 'hide', close );
+      accordeons.forEach( function( accordeon ){
+        var accordion = new window.Accordion( accordeon );
 
-      accordion.mount();
+        accordion.on( 'show', open );
+        accordion.on( 'hide', close );
+
+        accordion.mount();
+      });
     </script>
   </body>
 </html>
