@@ -1,6 +1,6 @@
 /**
  * @accedeweb/accordion - WAI-ARIA accordion plugin based on AcceDe Web accessibility guidelines
- * @version v0.0.0
+ * @version v1.0.0
  * @link http://a11y.switch.paris/
  * @license ISC
  **/
