@@ -56,17 +56,17 @@
     _createClass(Accordion, [{
       key: '_firstActiveHeader',
       value: function _firstActiveHeader() {
-        var activeHeader = void 0;
+        var activeHeaderIndex = void 0;
 
         this._accordion.headers.some(function (header, index) {
           if (!header.disabled) {
-            activeHeader = index;
+            activeHeaderIndex = index;
 
             return true;
           }
         });
 
-        return activeHeader;
+        return activeHeaderIndex;
       }
 
       /**
@@ -255,7 +255,7 @@
         // handle disabled header
         if (this._accordion.headers[index] && this._accordion.headers[index].disabled) {
 
-          // cycling forward? Then go one item farther
+          // cycling forward? Then go one item further
           var newIndex = index > this._accordion.currentIndex ? index + 1 : index - 1;
 
           this._switchPanel(newIndex);
@@ -263,12 +263,14 @@
           return;
         }
 
-        this._accordion.currentIndex = index;
+        var firstActiveHeader = this._firstActiveHeader();
 
-        if (this._accordion.currentIndex < this._firstActiveHeader()) {
+        if (index < firstActiveHeader) {
           this._accordion.currentIndex = this._accordion.headersLength - 1;
-        } else if (this._accordion.currentIndex >= this._accordion.headersLength) {
-          this._accordion.currentIndex = this._firstActiveHeader();
+        } else if (index >= this._accordion.headersLength) {
+          this._accordion.currentIndex = firstActiveHeader;
+        } else {
+          this._accordion.currentIndex = index;
         }
 
         this._accordion.headers[this._accordion.currentIndex].focus();
@@ -277,7 +279,7 @@
       /**
        * Toggle the `aria-expanded` attribute on the header based on the passed index
        * @param {integer} index - index of the panel
-       * @param {boolean} show - wether or not display the panel
+       * @param {boolean} show - whether or not display the panel
        */
 
     }, {
@@ -387,7 +389,7 @@
 
           header.disabled = header.hasAttribute('disabled') || header.getAttribute('aria-disabled') === 'true';
 
-          if (header.getAttribute('data-expanded') === 'true' && !header.disabled) {
+          if (header.getAttribute('data-expand') === 'true' && !header.disabled) {
             if (_this3.multiselectable || !_this3.multiselectable && !_this3._accordion.openedIndexes.length) {
               _this3._toggleDisplay(index, true);
 
@@ -396,7 +398,7 @@
           }
 
           // remove setup data attributes
-          header.removeAttribute('data-expanded');
+          header.removeAttribute('data-expand');
 
           // set the attributes according the the openedTab status
           header.setAttribute('tabindex', 0);
@@ -407,7 +409,7 @@
           header.addEventListener('click', _this3._handleDisplay);
           header.addEventListener('focus', _this3._handleFocus);
           header.addEventListener('keydown', _this3._handleHeaders);
-          panel.addEventListener('focus', _this3._handlePanelFocus);
+          panel.addEventListener('focus', _this3._handlePanelFocus, true);
           panel.addEventListener('keydown', _this3._handlePanel);
         });
 
@@ -469,7 +471,7 @@
           header.removeAttribute('tabindex');
           header.removeAttribute('aria-expanded');
 
-          panel.removeEventListener('focus', _this4._handlePanelFocus);
+          panel.removeEventListener('focus', _this4._handlePanelFocus, true);
           panel.removeEventListener('keydown', _this4._handlePanel);
           panel.setAttribute('aria-hidden', 'false');
         });
