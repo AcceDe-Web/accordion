@@ -1,6 +1,6 @@
 {
   "title": "AcceDe Web - accordion",
-  "name": "@accedeweb/accordion",
+  "name": "@accede-web/accordion",
   "version": "1.0.0",
   "description": "WAI-ARIA accordion plugin based on AcceDe Web accessibility guidelines",
   "main": "dist/accordion.js",

@@ -71,17 +71,17 @@ The selector can be anything you want, like a class, as the script allows callba
 The script itself, either from npm:
 
 ```bash
-$ npm install @accedeweb/accordion
+$ npm install @accede-web/accordion
 ```
 
 and later in your code:
 
 ```js
-var Accordion = require( '@accedeweb/accordion' );
+var Accordion = require( '@accede-web/accordion' );
 
 // or
 
-import Accordion from @accedeweb/accordion;
+import Accordion from @accede-web/accordion;
 ```
 
 or downloaded from Github and added to the page (minified and non minified versions available in the `dist` folder)
