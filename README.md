@@ -137,10 +137,11 @@ The `Accordion` constructor returns 4 methods:
 * `mount()` - start the magic
 * `unmount()` - unbind keyboard and mouse events
 * `on( event, callback )` - bind a callback to either the `show` or `hide` event triggered when changing panel. Both `header` and `panel` HTMLElement are passed on the callback
-* `off( event, callback )` - unbind a callback to either the `show` or `hide` event triggered when changing panel.
-Both `header` and `panel` HTMLElement are passed on the callback
-* `closeAll()` - Close all currently opened panels (will trigger a `close` event on each opened panel).
-* `close( panel )` - Close a panel. Panel is an `HTMLElement` representing the panel. It will trigger a `close` event on the panel.
+* `off( event, callback )` - unbind a callback to either the `show` or `hide` event triggered when changing panel
+* `closeAll()` - Close all currently opened panels (will trigger a `hide` event on each opened panel).
+* `close( panel )` - Close a panel. `panel` is an `HTMLElement` representing the panel. It will trigger a `hide` event on the panel.
+* `openAll()` - Open all panels (will trigger a `show` event on each opened panel).
+* `open( panel )` - Open a panel. `panel` is an `HTMLElement` representing the panel. It will trigger a `show` event on the panel.
 
 ## Properties
 
