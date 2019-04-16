@@ -311,3 +311,56 @@ test( 'Callbacks', async t => {
 
   t.end();
 });
+
+
+test( 'Open All', async t => {
+
+  const [ browser, page ] = await createBrowser();
+
+  const [ openHeaders, openPanels ] = await page.evaluate(() => {
+    window.accordeons[ 0 ].openAll();
+
+
+    const header = document.querySelectorAll( '[aria-controls][aria-expanded="true"]' );
+    const panel = document.querySelectorAll( '.panel[aria-hidden="false"]' );
+
+
+    return [
+      header.length,
+      panel.length
+    ];
+  });
+
+  t.true( openHeaders === 4 && openPanels === 4, 'La méthode « openAll » ouvre tous les panneaux' );
+
+  await browser.close();
+
+  t.end();
+});
+
+
+test( 'Close All', async t => {
+
+  const [ browser, page ] = await createBrowser();
+
+  const [ closedHeaders, closedPanels ] = await page.evaluate(() => {
+    window.accordeons[ 0 ].openAll();
+
+    window.accordeons[ 0 ].closeAll();
+
+    const header = document.querySelectorAll( '[data-multiselectable="true"] [aria-controls][aria-expanded="false"]' );
+    const panel = document.querySelectorAll( '[data-multiselectable="true"] .panel[aria-hidden="true"]' );
+
+
+    return [
+      header.length,
+      panel.length
+    ];
+  });
+
+  t.true( closedHeaders === 4 && closedPanels === 4, 'La méthode « openAll » ouvre tous les panneaux' );
+
+  await browser.close();
+
+  t.end();
+});

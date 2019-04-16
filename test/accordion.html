@@ -188,13 +188,15 @@
 
       var accordeons = Array.from( document.querySelectorAll( '[data-role="accordion"]' ));
 
-      accordeons.forEach( function( accordeon ){
+      window.accordeons = accordeons.map( function( accordeon ){
         var accordion = new window.Accordion( accordeon );
 
         accordion.on( 'show', open );
         accordion.on( 'hide', close );
 
         accordion.mount();
+
+        return accordion;
       });
     </script>
   </body>
