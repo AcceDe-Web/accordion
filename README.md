@@ -6,7 +6,7 @@ WAI-ARIA accordion plugin without dependencies.
 
 ### HTML
 
-Basic HTML structure with a heading containing a button and the element to display. Headings can be any `hx` from `h1` to `h6` or an element with `role="heading"` and `aria-level` attributes. The headings and panels must be enclosed in a common element used to initiate the script.
+Basic HTML structure with a heading containing a button and the element to display. Headings can be any `hx` from `h1` to `h6` or an element with `role="heading"` and `aria-level` attributes. The headings and panels must be enclosed in a common element used to initiate the script. `aria-controls` attribute can be replaced with `data-controls` if necessary.
 
 #### HTML structure
 
