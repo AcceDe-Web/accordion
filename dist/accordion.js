@@ -1,6 +1,6 @@
 /**
  * @accede-web/accordion - WAI-ARIA accordion plugin based on AcceDe Web accessibility guidelines
- * @version v1.0.1
+ * @version v1.1.0
  * @link http://a11y.switch.paris/
  * @license ISC
  **/
@@ -370,17 +370,19 @@
           }
 
           // set the header to be the button actioning the panel
-          header = header.querySelector('button[aria-controls], [role="button"][aria-controls]');
+          header = header.querySelector('button[aria-controls], button[data-controls], [role="button"][aria-controls], [role="button"][data-controls]');
 
           if (!header) {
             return;
           }
 
-          var panel = document.getElementById(header.getAttribute('aria-controls'));
+          var id = header.getAttribute('aria-controls') || header.getAttribute('data-controls');
+
+          var panel = document.getElementById(id);
           var openedTab = false;
 
           if (!panel) {
-            throw new Error('Could not find associated panel for header ' + header.id + '. Use [aria-controls="panelId"] on the [role="header"] element to link them together');
+            throw new Error('Could not find associated panel for header ' + header.id + '. Use [aria-controls="panelId"] or [data-controls="panelId"] on the [role="header"] element to link them together');
           }
 
           // store the header and the panel on their respective arrays on the headerlist
@@ -391,7 +393,7 @@
 
           if (header.getAttribute('data-expand') === 'true' && !header.disabled) {
             if (_this3.multiselectable || !_this3.multiselectable && !_this3._accordion.openedIndexes.length) {
-              _this3._toggleDisplay(index, true);
+              _this3._toggleDisplay(_this3._accordion.headers.length - 1, true);
 
               openedTab = true;
             }
@@ -445,6 +447,26 @@
 
         this._callbacks[event].push(callback);
       }
+    }, {
+      key: 'openAll',
+      value: function openAll() {
+        var _this4 = this;
+
+        if (!this.multiselectable) {
+          return;
+        }
+
+        this._accordion.panels.forEach(function (panel, index) {
+          _this4._toggleDisplay(index, true);
+        });
+      }
+    }, {
+      key: 'open',
+      value: function open(panel) {
+        var index = this._accordion.panels.indexOf(panel);
+
+        this._toggleDisplay(index, true);
+      }
 
       /**
        * Returns an array of opened panels
@@ -458,33 +480,33 @@
        * unbind accordion
        */
       value: function unmount() {
-        var _this4 = this;
+        var _this5 = this;
 
         this._accordion.headers.forEach(function (header, index) {
-          var panel = _this4._accordion.panels[index];
+          var panel = _this5._accordion.panels[index];
 
           // unsubscribe internal events for header and panel
-          header.removeEventListener('click', _this4._handleDisplay);
-          header.removeEventListener('focus', _this4._handleFocus);
-          header.removeEventListener('keydown', _this4._handleHeaders);
+          header.removeEventListener('click', _this5._handleDisplay);
+          header.removeEventListener('focus', _this5._handleFocus);
+          header.removeEventListener('keydown', _this5._handleHeaders);
 
           header.removeAttribute('tabindex');
           header.removeAttribute('aria-expanded');
 
-          panel.removeEventListener('focus', _this4._handlePanelFocus, true);
-          panel.removeEventListener('keydown', _this4._handlePanel);
+          panel.removeEventListener('focus', _this5._handlePanelFocus, true);
+          panel.removeEventListener('keydown', _this5._handlePanel);
           panel.setAttribute('aria-hidden', 'false');
         });
       }
     }, {
       key: 'current',
       get: function get() {
-        var _this5 = this;
+        var _this6 = this;
 
         return this._accordion.openedIndexes.map(function (index) {
           return {
-            header: _this5._accordion.headers[index],
-            panel: _this5._accordion.panels[index]
+            header: _this6._accordion.headers[index],
+            panel: _this6._accordion.panels[index]
           };
         });
       }
