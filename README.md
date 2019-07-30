@@ -81,7 +81,7 @@ var Accordion = require( '@accede-web/accordion' );
 
 // or
 
-import Accordion from @accede-web/accordion;
+import Accordion from '@accede-web/accordion';
 ```
 
 or downloaded from Github and added to the page (minified and non minified versions available in the `dist` folder)
